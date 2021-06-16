@@ -1,2 +1,2 @@
 # gallery-rotation
-Created with CodeSandbox
+Feito para estudar uns conceitos de css.

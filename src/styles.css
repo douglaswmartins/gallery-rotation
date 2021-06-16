@@ -1,0 +1,112 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.box {
+  position: relative;
+  gap: 10px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn {
+  z-index: 99;
+
+  color: #eee;
+  width: 280px;
+  height: 80%;
+  cursor: pointer;
+  border: 0px solid #eee;
+  outline: none;
+  font-size: 85px;
+
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.btn.btn-left {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.85) 40%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  transform: perspective(1000px) rotateY(-45deg);
+}
+
+.btn.btn-right {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.85) 60%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  transform: perspective(1000px) rotateY(45deg);
+}
+
+.box-images {
+  z-index: 1;
+  margin: 0 100px;
+  width: 300px;
+  height: 150px;
+}
+
+.box-images.rotation {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(calc(var(--index-img) * 45deg));
+  transition: transform 1s ease-in-out;
+}
+
+.box-images > span {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.box-images.rotation > span {
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+  -webkit-box-reflect: below 0
+    linear-gradient(transparent, transparent, #00000041);
+}
+
+.box-images > span > img {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes animate {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
